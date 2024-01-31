@@ -29,7 +29,7 @@ class CompagnieController extends Controller
     public function create()
     {
         //
-        return view('Compagnies.formCompagine');
+         return view('Compagnies.formCompagine');  
 
     }
 
