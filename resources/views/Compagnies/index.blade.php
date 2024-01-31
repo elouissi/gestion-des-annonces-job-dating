@@ -190,7 +190,7 @@
                                         <a class="btn btn-success" href="">update</a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"class="btn btn-primary" href="">delete</button>
+                                        <button type="submit"class="btn btn-primary" >delete</button>
                                         </form>
                                     </td>
                                  </tr>

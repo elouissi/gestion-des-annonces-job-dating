@@ -16,6 +16,8 @@ use App\Http\Controllers\CompagnieController;
 */
 
 // Route::resource('Compagnies', CompagnieController::class);
+
+
 Route::get('/', [CompagnieController::class, 'index'])->name('Compagnies.index');
 Route::fallback(function(){
     return redirect('/');
@@ -27,7 +29,9 @@ Route::get('Compagnies/Add', function () {
 Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store');
 
 
-Route::delete('Compagnies/destroy' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
+Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
+
+
 // //pour nommer un router sans avoir le probleme du nom
 // Route::get('mycompagny', function () {
 //  return   view('mydata');
