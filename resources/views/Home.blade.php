@@ -63,18 +63,30 @@
     
                     <ul class="s-header__menu-links">
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
+                        @auth
+                            
+                  
                         <li><a href="{{route('Compagnies.index')}}" class="smoothscroll">dashboard</a></li>
+                        @endauth
                         {{-- <li><a href="#services" class="smoothscroll">Services</a></li>
                         <li><a href="#folio" class="smoothscroll">Work</a></li>
                         <li><a href="#footer" class="smoothscroll">Contact</a></li> --}}
                     </ul> <!-- s-header__menu-links -->
 
                     <ul class="s-header__social">
-                      
-                        <li>
-                             <a href="{{route('form.login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
+                     @guest
+                     <li>
+                     <a href="{{route('form.login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
 
-                        </li>
+                </li>
+                      @endguest
+                        @auth
+                        <li>
+                            <a href="{{route('logout')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log out</a>
+
+                       </li>
+                        @endauth
+                    
                         
                     </ul> <!-- s-header__social -->
     

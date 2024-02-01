@@ -24,7 +24,7 @@ Route::fallback(function(){
 });
 
 Route::get('/', [CompagnieController::class, 'home'])->name('Compagnies.home');
-Route::middleware('auth')->get('/dashboard', [CompagnieController::class, 'index'])->name('Compagnies.index');
+Route::get('/dashboard', [CompagnieController::class, 'index'])->name('Compagnies.index');
 Route::get('Compagnies/Add', function () { return   view('Compagnies.formCompagnie');  })->name('Compagnies.formCompagnies');
 Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store'); 
 Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
@@ -39,8 +39,9 @@ Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit
 Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
 
 
-Route::get('/login', [LoginController::class, 'index'])->name('form.login');
+Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('form.login');
 Route::Post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 

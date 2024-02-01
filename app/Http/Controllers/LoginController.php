@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Login;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\UpdateLoginRequest;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,24 +46,28 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         
-    //     $identifiant =['email'=>$email,'password'=>$password];
-    //     dd(Auth::attempt($identifiant));
-    // 
-    $user = login::where('email', $email)->first();
+        
+        $identifiant =['email'=>$email,'password'=>$password];
+    
+        if(Auth::attempt($identifiant) == "true"){
+       
+            $request->session()->regenerate();
+             return to_route('Compagnies.index')->with('success','welcome to your dashboard');
 
-    // Vérifier si le mot de passe fourni correspond au mot de passe stocké
-    if ($user && $password === $user->password) {
-        // Mot de passe correct
-        $request->session()->regenerate();
-        return to_route('Compagnies.index')->with('success','welcome to your dashboard');;
-     } else {
-        // Mot de passe incorrect
-        return back()->withErrors([
-            'email'=>'compte inoutrouvable'
-        ])->onlyInput('email');
-     }
+        }else{
+
+            return back()->withErrors([
+                      'email'=>'compte inoutrouvable'
+                   ])->onlyInput('email');
+        }
+    
+ 
 
 }
+    public function logout(){
+         Auth::logout();
+        return to_route('Compagnies.home');        
+    }
 
     public function show(Login $login)
     {
