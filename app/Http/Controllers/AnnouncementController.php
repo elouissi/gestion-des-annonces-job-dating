@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Compagnie;
-use App\Http\Requests\StoreAnnouncementRequest;
-use App\Http\Requests\UpdateAnnouncementRequest;
-use App\Models\User;
+use App\Http\Requests\CompagnieRequest;
+ use App\Models\User;
+use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
 {
@@ -34,9 +34,13 @@ class AnnouncementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAnnouncementRequest $request)
+    public function store(Request $request)
     {
         //
+        Announcement::create($request->all());
+         return redirect()->route('Compagnies.index')
+        ->with('success','announcement created successfully.');
+
     }
 
     /**
@@ -58,7 +62,7 @@ class AnnouncementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAnnouncementRequest $request, Announcement $announcement)
+    public function update(Request $request, Announcement $announcement)
     {
         //
     }

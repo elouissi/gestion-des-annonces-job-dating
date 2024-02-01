@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Announcement extends Model
 {
    
-    use HasFactory;
-    protected $table='announcements';
-    protected $fillable=[
-        "title","content","compagnie_id","user_id"
-    ];
 
 
     public function user()
@@ -23,6 +18,12 @@ class Announcement extends Model
     {
         return $this->belongsTo(Compagnie::class);
     }
+    
+    use HasFactory;
+    protected $table='announcements';
+    protected $fillable=[
+        "title","content","compagnie_id","user_id"
+    ];
 }
 
 

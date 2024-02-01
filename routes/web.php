@@ -43,6 +43,9 @@ Route::put('Compagnies/{compagnie}' , [CompagnieController::class, 'update'])->n
 
 Route::get('Announcement/Add', [AnnouncementController::class, 'index'])->name('Announcement.formAnnouncement');
 
+Route::post('Announcement/store', [AnnouncementController::class, 'store'])->name('Announcement.store');
+
+
 // Route::get('Announcement/Add', function () {
 //     return   view('Announcement.formAnnouncement');  
 //    })->name('Announcement.formAnnouncement');

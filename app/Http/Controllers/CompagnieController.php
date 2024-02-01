@@ -40,9 +40,9 @@ class CompagnieController extends Controller
      */
     public function store(CompagnieRequest $request)
     { 
-       Compagnie::create($request->validated());
+        Compagnie::create($request->validated());
         return redirect()->route('Compagnies.index')
-                        ->with('success','Book created successfully.');
+                        ->with('success','company created successfully.');
     }
 
     /**
