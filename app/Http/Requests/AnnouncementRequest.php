@@ -13,7 +13,7 @@ class AnnouncementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,18 +25,17 @@ class AnnouncementRequest extends FormRequest
     {
         
             return [
-                'title'=>'required' ,
+                'title'=>['required', new TitleRuleRequest ] ,
                 'content'=>'required|string',
-                'user_id' => 'raquired',
-                'compagnie_id' => 'required'
+                'user_id' => 'required|integer',
+                'compagnie_id' => 'required|integer'
                  
             ];
         }
         public function messages(){
             return [
                 'title.required' => 'vous devez remplire le champ du title' ,
-                'title.min' => 'vous devez ajouter des lettres' ,
-                'title.max' => 'vous devez minimiser votre texte' ,
+            
     
     
             ];

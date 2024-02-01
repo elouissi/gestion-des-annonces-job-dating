@@ -104,7 +104,11 @@
             
              <!-- Navbar End -->
 
-
+             @if ($message = Session::get('success'))
+             <div class="alert alert-success">
+                 <p>{{ $message }}</p>
+             </div>
+         @endif
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -153,7 +157,7 @@
           
             <!-- Sales Chart End -->
 
-
+      
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
@@ -161,6 +165,7 @@
                         <h6 class="mb-0">compagnies</h6>
                          <a class="btn btn-sm btn-primary" href="{{ route('Compagnies.formCompagnies') }}">add compagnie</a>
                     </div>
+             
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -207,6 +212,7 @@
                         <h6 class="mb-0">Announcement</h6>
                         <a class="btn btn-sm btn-primary" href="{{ route('Announcement.formAnnouncement') }}">Add Announcement</a>
                     </div>
+             
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -243,7 +249,8 @@
             
             <!-- Recent Sales End -->
 
-
+       
+           
             <!-- Widgets Start -->
      
             <!-- Widgets End -->

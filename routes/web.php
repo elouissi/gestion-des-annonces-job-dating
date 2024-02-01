@@ -23,30 +23,17 @@ Route::fallback(function(){
 });
 
 Route::get('/', [CompagnieController::class, 'index'])->name('Compagnies.index');
-
 Route::get('Compagnies/Add', function () { return   view('Compagnies.formCompagnie');  })->name('Compagnies.formCompagnies');
-
-
-Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store');
-
-    
+Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store'); 
 Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
-
-
 Route::get('Compagnies/{compagnie}' , [CompagnieController::class, 'edit'])->name('compagnie.edit');
-
-
 Route::put('Compagnies/{compagnie}' , [CompagnieController::class, 'update'])->name('compagnies.update');
 
 
 Route::get('Announcement/Add', [AnnouncementController::class, 'index'])->name('Announcement.formAnnouncement');
-
 Route::post('Announcement/store', [AnnouncementController::class, 'store'])->name('Announcement.store');
-
 Route::delete('Announcement/{announcement}' , [AnnouncementController::class, 'destroy'])->name('Announcement.destroy');
-
 Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit'])->name('Announcement.edit');
-
 Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
 
 
