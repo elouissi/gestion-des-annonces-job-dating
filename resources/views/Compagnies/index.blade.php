@@ -227,7 +227,7 @@
                                         <td>{{ $announcement->user->name }}</td>
                                         <td>
                                             <form action="{{ route('Announcement.destroy', $announcement->id) }}" method="POST">
-                                                <a class="btn btn-success" href="{{ route('compagnie.edit', $announcement->id) }}">Update</a>
+                                                <a class="btn btn-success" href="{{ route('Announcement.edit', $announcement->id) }}">Update</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-primary">Delete</button>

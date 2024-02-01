@@ -19,6 +19,7 @@ class AnnouncementController extends Controller
         
         $compagnies = Compagnie::latest()->paginate(100);
         $users = User::latest()->paginate(100);
+        
      
         return view('Announcement.formAnnouncement', compact('compagnies', 'users'));
     }
@@ -57,6 +58,11 @@ class AnnouncementController extends Controller
     public function edit(Announcement $announcement)
     {
         //
+        $compagnies = Compagnie::latest()->paginate(100);
+        $users = User::latest()->paginate(100);
+        $announcements = Announcement::with('user','compagnie')->latest()->paginate(100);
+        return view('Announcement.edit', compact('announcement','compagnies','users'));
+
     }
 
     /**
@@ -65,6 +71,9 @@ class AnnouncementController extends Controller
     public function update(Request $request, Announcement $announcement)
     {
         //
+        $announcement->update($request->all());
+        return redirect()->route('Compagnies.index')
+                        ->with('success','announcement Updated successfully.');
     }
 
     /**

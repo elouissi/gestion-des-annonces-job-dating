@@ -45,6 +45,10 @@ Route::post('Announcement/store', [AnnouncementController::class, 'store'])->nam
 
 Route::delete('Announcement/{announcement}' , [AnnouncementController::class, 'destroy'])->name('Announcement.destroy');
 
+Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit'])->name('Announcement.edit');
+
+Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
+
 
 
 // Route::get('Announcement/Add', function () {
