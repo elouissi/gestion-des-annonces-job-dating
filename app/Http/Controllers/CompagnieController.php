@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compagnie;
+use App\Models\Announcement;
 use App\Http\Requests\CompagnieRequest;
 use App\Http\Requests\UpdateCompagnieRequest;
-use Faker\Provider\ar_EG\Company;
-use Illuminate\Http\Request;
 
 
 class CompagnieController extends Controller
@@ -17,10 +16,13 @@ class CompagnieController extends Controller
     public function index()
     {
         //
-        $compagnies= compagnie::latest()->paginate(100);
+     
+            $compagnies = Compagnie::latest()->paginate(100);
+            $announcements = Announcement::with('user','compagnie')->latest()->paginate(100);
         
-        return view('Compagnies.index',compact('compagnies'))
-                    ->with('i', (request()->input('page', 1) - 1) * 100);
+            return view('Compagnies.index', compact('compagnies', 'announcements'))
+                        ->with('i', (request()->input('page', 1) - 1) * 100);
+        
     }
 
     /**
@@ -37,16 +39,8 @@ class CompagnieController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(CompagnieRequest $request)
-    {
-        //
-    
- 
+    { 
        Compagnie::create($request->validated());
-    
-
-  
-
-         
         return redirect()->route('Compagnies.index')
                         ->with('success','Book created successfully.');
     }
@@ -66,7 +60,7 @@ class CompagnieController extends Controller
     public function edit(Compagnie $compagnie)
     {
         //
-        return view('Compagnies.edit', compact('compagnies'));
+         return view('Compagnies.edit', compact('compagnie'));
 
     }
 
@@ -75,16 +69,10 @@ class CompagnieController extends Controller
      */
     public function update(CompagnieRequest $request, Compagnie $compagnie)
     {
-     
-      
-        $compagnie->update($request->all());
-  
-
-         
+       
+        $compagnie->update($request->validated());
         return redirect()->route('Compagnies.index')
-                        ->with('success','Book created successfully.');
-
-        //
+                        ->with('success','Company Updated successfully.');
     }
 
     /**
@@ -97,6 +85,6 @@ class CompagnieController extends Controller
         $compagnie->delete();
          
         return redirect()->route('Compagnies.index')
-                        ->with('success','Book deleted successfully');
+                        ->with('success','Company deleted successfully');
     }
 }

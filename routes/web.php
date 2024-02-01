@@ -23,15 +23,25 @@ Route::fallback(function(){
     return redirect('/');
 });
 Route::get('Compagnies/Add', function () {
- return   view('Compagnies.formCompagnie');
-    
+ return   view('Compagnies.formCompagnie');  
 })->name('Compagnies.formCompagnies');
+
+
 Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store');
 
-
+    
 Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
 
 
+Route::get('Compagnies/{compagnie}' , [CompagnieController::class, 'edit'])->name('compagnie.edit');
+
+
+Route::put('Compagnies' , [CompagnieController::class, 'update'])->name('compagnies.update');
+
+
+Route::get('Announcement/Add', function () {
+    return   view('Announcement.formAnnouncement');  
+   })->name('Announcement.formAnnouncement');
 // //pour nommer un router sans avoir le probleme du nom
 // Route::get('mycompagny', function () {
 //  return   view('mydata');

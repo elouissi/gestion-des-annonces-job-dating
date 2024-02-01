@@ -112,8 +112,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today compagnie</p>
-                                <h6 class="mb-0">1</h6>
+                                <p class="mb-2">Total compagnies</p>
+                                <h6 class="mb-0">{{count($compagnies)}}</h6>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">1</h6>
+                                <h6 class="mb-0">{{count($announcements)}}</h6>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                                     <td>
                                         <form action="{{ route('compagnie.destroy',$compagnie->id) }}" method="POST">
                                            
-                                        <a class="btn btn-success" href="">update</a>
+                                        <a class="btn btn-success" href="{{ route('compagnie.edit',$compagnie->id) }}">update</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"class="btn btn-primary" >delete</button>
@@ -205,7 +205,7 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Announcement</h6>
-                         <a class="btn btn-sm btn-primary" href="">add Announcement</a>
+                         <a class="btn btn-sm btn-primary" href="{{ route('Announcement.formAnnouncement') }}"add Announcement</a>
 
                     </div>
                     <div class="table-responsive">
@@ -215,22 +215,33 @@
                                  
                                     <th scope="col">title</th>
                                     <th scope="col">content</th>
-                                    <th scope="col">compagnie</th>
-                                    <th scope="col">date created</th>
+                                    <th scope="col">company name</th>
+                                    <th scope="col">user name</th>
                                      <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                             
+                                
+                                @foreach ($announcements as $announcement)
+                                
                                 <tr>
-                                     <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                     <td><a class="btn btn-primary" href="">delete</a>
-                                        <a class="btn btn-success" href="">update</a>
+                                    <td>{{ $announcement->title }}</td>
+                                    <td>{{ $announcement->content }}</td>
+                                    <td>{{ $announcement->compagnie->name }}</td>
+                                    <td>{{ $announcement->user->name }}</td>
+                            
+                                    {{-- <td>{{ $announcement->title }}</td> --}}
+                                    <td>
+                                        <form action="{{ route('compagnie.destroy',$announcement->id) }}" method="POST">
+                                           
+                                        <a class="btn btn-success" href="{{ route('compagnie.edit',$announcement->id) }}">update</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"class="btn btn-primary" >delete</button>
+                                        </form>
                                     </td>
                                  </tr>
+                                 @endforeach
                             </tbody>
                         </table>
                     </div>
