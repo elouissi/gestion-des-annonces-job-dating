@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
  use Illuminate\View\AnonymousComponent;
 use App\Http\Controllers\CompagnieController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\LoginController;
 use App\Models\Announcement;
 
 /*
@@ -16,13 +17,14 @@ use App\Models\Announcement;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+ 
 // Route::resource('Compagnies', CompagnieController::class);
 Route::fallback(function(){
     return redirect('/');
 });
 
-Route::get('/', [CompagnieController::class, 'index'])->name('Compagnies.index');
+Route::get('/', [CompagnieController::class, 'home'])->name('Compagnies.home');
+Route::middleware('auth')->get('/dashboard', [CompagnieController::class, 'index'])->name('Compagnies.index');
 Route::get('Compagnies/Add', function () { return   view('Compagnies.formCompagnie');  })->name('Compagnies.formCompagnies');
 Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store'); 
 Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy'])->name('compagnie.destroy');
@@ -35,6 +37,10 @@ Route::post('Announcement/store', [AnnouncementController::class, 'store'])->nam
 Route::delete('Announcement/{announcement}' , [AnnouncementController::class, 'destroy'])->name('Announcement.destroy');
 Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit'])->name('Announcement.edit');
 Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('form.login');
+Route::Post('/login', [LoginController::class, 'login'])->name('login');
 
 
 

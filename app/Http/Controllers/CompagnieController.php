@@ -24,6 +24,18 @@ class CompagnieController extends Controller
                         ->with('i', (request()->input('page', 1) - 1) * 100);
         
     }
+    
+    public function home()
+    {
+        //
+     
+            $compagnies = Compagnie::latest()->paginate(100);
+            $announcements = Announcement::with('user','compagnie')->latest()->paginate(100);
+        
+            return view('Home', compact('compagnies', 'announcements'))
+                        ->with('i', (request()->input('page', 1) - 1) * 100);
+        
+    }
 
     /**
      * Show the form for creating a new resource.
