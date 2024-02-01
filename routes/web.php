@@ -18,15 +18,13 @@ use App\Models\Announcement;
 */
 
 // Route::resource('Compagnies', CompagnieController::class);
-
-
-Route::get('/', [CompagnieController::class, 'index'])->name('Compagnies.index');
 Route::fallback(function(){
     return redirect('/');
 });
-Route::get('Compagnies/Add', function () {
- return   view('Compagnies.formCompagnie');  
-})->name('Compagnies.formCompagnies');
+
+Route::get('/', [CompagnieController::class, 'index'])->name('Compagnies.index');
+
+Route::get('Compagnies/Add', function () { return   view('Compagnies.formCompagnie');  })->name('Compagnies.formCompagnies');
 
 
 Route::post('Compagnies/create', [CompagnieController::class, 'store'])->name('compagnies.store');
@@ -44,6 +42,9 @@ Route::put('Compagnies/{compagnie}' , [CompagnieController::class, 'update'])->n
 Route::get('Announcement/Add', [AnnouncementController::class, 'index'])->name('Announcement.formAnnouncement');
 
 Route::post('Announcement/store', [AnnouncementController::class, 'store'])->name('Announcement.store');
+
+Route::delete('Announcement/{announcement}' , [AnnouncementController::class, 'destroy'])->name('Announcement.destroy');
+
 
 
 // Route::get('Announcement/Add', function () {
