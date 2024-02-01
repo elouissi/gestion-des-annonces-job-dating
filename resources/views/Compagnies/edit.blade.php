@@ -1,6 +1,6 @@
 @extends('Compagnies.create')
 @section('content')
-<form action="{{ route('compagnies.update')}}" method="POST">
+<form action="{{ route('compagnies.update', $compagnie->id)}}" method="POST">
     @csrf
     @method('PUT')
  <div class="col-sm-12 col-xl-6" style="margin: auto">
@@ -27,8 +27,6 @@
             <label for="floatingInput">field of activity</label>
         </div>
         <button type="submit"class="btn btn-sm btn-primary">update compagnie</button>
-
-       
     </div>
 </div>
 </form>

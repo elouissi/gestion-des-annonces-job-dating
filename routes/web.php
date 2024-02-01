@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
  use Illuminate\View\AnonymousComponent;
 use App\Http\Controllers\CompagnieController;
+use App\Http\Controllers\AnnouncementController;
+use App\Models\Announcement;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,12 +38,14 @@ Route::delete('Compagnies/{compagnie}' , [CompagnieController::class, 'destroy']
 Route::get('Compagnies/{compagnie}' , [CompagnieController::class, 'edit'])->name('compagnie.edit');
 
 
-Route::put('Compagnies' , [CompagnieController::class, 'update'])->name('compagnies.update');
+Route::put('Compagnies/{compagnie}' , [CompagnieController::class, 'update'])->name('compagnies.update');
 
 
-Route::get('Announcement/Add', function () {
-    return   view('Announcement.formAnnouncement');  
-   })->name('Announcement.formAnnouncement');
+Route::get('Announcement/Add', [AnnouncementController::class, 'index'])->name('Announcement.formAnnouncement');
+
+// Route::get('Announcement/Add', function () {
+//     return   view('Announcement.formAnnouncement');  
+//    })->name('Announcement.formAnnouncement');
 // //pour nommer un router sans avoir le probleme du nom
 // Route::get('mycompagny', function () {
 //  return   view('mydata');

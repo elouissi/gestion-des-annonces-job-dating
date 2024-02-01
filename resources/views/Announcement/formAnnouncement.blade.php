@@ -16,10 +16,14 @@
             <label for="floatingInput">address</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" name="contact" class="form-control" id="floatingPassword"
-                placeholder="contact">
-            <label for="floatingInput">contact</label>
-        </div>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                @foreach($Announcements as $a)
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+         </div>
         <div class="form-floating mb-3">
             <input type="text" name="field_of_activity" class="form-control" id="floatingPassword"
                 placeholder="contact">

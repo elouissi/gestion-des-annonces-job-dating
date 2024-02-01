@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Compagnie;
 use App\Http\Requests\StoreAnnouncementRequest;
 use App\Http\Requests\UpdateAnnouncementRequest;
+use App\Models\User;
 
 class AnnouncementController extends Controller
 {
@@ -15,6 +17,10 @@ class AnnouncementController extends Controller
     {
         //
         
+        $compagnies = Compagnie::latest()->paginate(100);
+        $users = User::latest()->paginate(100);
+     
+        return view('Announcement.formAnnouncement', compact('compagnies', 'users'));
     }
 
     /**

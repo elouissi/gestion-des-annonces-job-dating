@@ -69,7 +69,6 @@ class CompagnieController extends Controller
      */
     public function update(CompagnieRequest $request, Compagnie $compagnie)
     {
-       
         $compagnie->update($request->validated());
         return redirect()->route('Compagnies.index')
                         ->with('success','Company Updated successfully.');
