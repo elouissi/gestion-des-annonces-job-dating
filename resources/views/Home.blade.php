@@ -120,10 +120,8 @@
                         your job                        </h1>
 
                         <div class="s-intro__content-buttons">
-                            <a href="#download" class="btn btn--stroke s-intro__content-btn smoothscroll">More About Us</a>
-                            <a href="https://player.vimeo.com/video/14592941?color=f26522&title=0&byline=0&portrait=0" class="s-intro__content-video-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M7 6v12l10-6z"></path></svg>
-                            </a>
+                            <a href="#download" class="btn btn--stroke s-intro__content-btn smoothscroll">announcements</a>
+                            
                         </div>
                         
                     </div> <!-- s-intro__content-inner -->
