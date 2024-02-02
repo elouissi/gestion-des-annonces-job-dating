@@ -22,7 +22,7 @@ class Announcement extends Model
     use HasFactory;
     protected $table='announcements';
     protected $fillable=[
-        "title","content","compagnie_id","user_id"
+        "title","content","image","compagnie_id","user_id"
     ];
 }
 

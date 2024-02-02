@@ -38,9 +38,10 @@ class AnnouncementController extends Controller
     public function store(AnnouncementRequest $request)
     {
         //
-        
+        $form = $request->validated();
+         $form['image'] =$request->file('image')->store('announcement','public');
      
-        Announcement::create($request->validated());
+        Announcement::create($form);
          return redirect()->route('Compagnies.index')
         ->with('success','announcement created successfully.');
 

@@ -28,7 +28,8 @@ class AnnouncementRequest extends FormRequest
                 'title'=>['required', new TitleRuleRequest ] ,
                 'content'=>'required|string',
                 'user_id' => 'required|integer',
-                'compagnie_id' => 'required|integer'
+                'compagnie_id' => 'required|integer',
+                'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:12000 '
                  
             ];
         }

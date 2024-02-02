@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('Announcement.store')}}" method="POST">
+<form action="{{ route('Announcement.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
  <div class="col-sm-12 col-xl-6" style="margin: auto">
     <div class="bg-secondary rounded h-100 p-4">
@@ -25,6 +25,7 @@
                 placeholder="content">
             <label for="floatingInput">content</label>
         </div>
+    
         <div class="form-floating mb-3">
             <select class="form-select form-select " name="compagnie_id" aria-label=".form-select-lg example">
                 <option selected>select your company</option>
@@ -43,6 +44,12 @@
               
             </select>
          </div>
+         <div class="form-floating mb-3">
+            <div>
+                <label for="formFileLg" class="form-label">select image for your announcement</label>
+                <input class="form-control form-control-lg bg-dark" id="formFileLg" type="file" name="image">
+            </div>
+        </div>
       
         <button type="submit"class="btn btn-sm btn-primary">add compagnie</button>
 

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logins', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('announcements', function (Blueprint $table) {
+            //
+            $table->string('image', 255)->after('content');
         });
     }
 
@@ -22,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logins');
+        Schema::table('announcements', function (Blueprint $table) {
+            //
+            $table->dropColumn('image');
+        });
     }
 };
