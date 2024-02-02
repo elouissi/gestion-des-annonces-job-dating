@@ -149,7 +149,7 @@
         
                     <div class="column list-block__item">
                         <div class="entry__thumb">
-                            <img src="images/folio/tropical@2x.jpg" alt="">
+                            <img src="{{ asset( 'storage/'.$announcement->image) }}" alt="">
                         </div>
                         <div class="list-block__title">
                             <h3 class="h5">title: {{ $announcement->title }}</h3>
