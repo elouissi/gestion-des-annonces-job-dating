@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompagnieController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoleController;
+
 // use App\Http\Controllers\RoleController;
 
 
@@ -35,7 +37,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
-
+Route::get('/roles', [RoleController::class, 'index'])->name('roles.index'); // Utiliser le namespace complet une seule fois
 
 
 

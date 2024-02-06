@@ -57,6 +57,8 @@
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{ route('users.index') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>users</a>
+                    <a href="{{ route('roles.index') }}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>roles</a>
+                    
 
                    
                    

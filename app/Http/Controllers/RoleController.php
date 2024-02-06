@@ -15,18 +15,18 @@ class RoleController extends Controller
 */
 
 
-function __construct()
-{
+// function __construct()
+// {
 
-$this->middleware('permission:   afficher', ['only' => ['index']]);
-$this->middleware('permission:  ajouter ', ['only' => ['create','store']]);
-$this->middleware('permission:   modifier', ['only' => ['edit','update']]);
-$this->middleware('permission: supprimer  ', ['only' => ['destroy']]);
+// $this->middleware('permission:   afficher', ['only' => ['index']]);
+// $this->middleware('permission:  ajouter ', ['only' => ['create','store']]);
+// $this->middleware('permission:   modifier', ['only' => ['edit','update']]);
+// $this->middleware('permission: supprimer  ', ['only' => ['destroy']]);
 
-}
+// }
 
 
-
+    
 
 /**
 * Display a listing of the resource.
@@ -36,7 +36,7 @@ $this->middleware('permission: supprimer  ', ['only' => ['destroy']]);
 public function index(Request $request)
 {
 $roles = Role::orderBy('id','DESC')->paginate(5);
-return view('roles.index',compact('roles'))
+return view('Roles.show_roles',compact('roles'))
 ->with('i', ($request->input('page', 1) - 1) * 5);
 }
 /**

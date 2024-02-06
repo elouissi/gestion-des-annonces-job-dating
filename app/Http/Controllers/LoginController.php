@@ -35,7 +35,6 @@ class LoginController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles_name' => 'required'
             ]);
             
             $input = $request->all();
