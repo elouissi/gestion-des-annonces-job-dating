@@ -75,8 +75,9 @@
 
                     <ul class="s-header__social">
                      @guest
-                     <li>
+                     <li style="display: flex" >
                      <a href="{{route('form.login')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">Log in</a>
+                     <a href="{{route('form.regiter')}}" class="btn btn--stroke s-intro__content-btn smoothscroll">register</a>
 
                 </li>
                       @endguest

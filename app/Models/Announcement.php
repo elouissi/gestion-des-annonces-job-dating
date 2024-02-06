@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Announcement extends Model
 {
@@ -18,8 +20,18 @@ class Announcement extends Model
     {
         return $this->belongsTo(Compagnie::class);
     }
+    // public static function boot ()  {
+    //     parent::boot();
+    //     static::deleting(function(Announcement $announcement){
+    //         $announcement->compagnie()->delete();
+            
+    //     });
+        
+    // }
     
     use HasFactory;
+    use SoftDeletes;
+
     protected $table='announcements';
     protected $fillable=[
         "title","content","image","compagnie_id","user_id"
