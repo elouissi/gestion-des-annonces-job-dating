@@ -61,17 +61,14 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ route('users.index') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>users</a>
+                    <a href="{{ route('roles.index') }}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>roles</a>
+                    
+
                    
                    
               
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-             
-                        </div>
-                    </div>
+                    
                 </div>
             </nav>
         </div>

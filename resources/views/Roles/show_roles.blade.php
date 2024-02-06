@@ -3,8 +3,8 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">compagnies</h6>
-             <a class="btn btn-sm btn-primary" href="{{ route('Compagnies.formCompagnies') }}">add compagnie</a>
+            <h6 class="mb-0">roles</h6>
+             <a class="btn btn-sm btn-primary" href="{{ route('roles.create') }}">add roles</a>
         </div>
  
         <div class="table-responsive">
@@ -13,8 +13,7 @@
                     <tr class="text-white">
                      
                         <th scope="col">name</th>
-                        <th scope="col">email</th>
-                        <th scope="col">role</th>
+                         <th scope="col">permission</th>
                          {{-- <th scope="col">createdDate</th> --}}
                         <th scope="col">Action</th>
                     </tr>

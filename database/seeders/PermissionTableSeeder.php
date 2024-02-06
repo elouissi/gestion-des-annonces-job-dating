@@ -16,30 +16,30 @@ public function run()
 
 $permissions = [
 
-        'show-annoncement',
-        'show-archive annoncement',
-        'show-comagnies',
-        'show-roles',
-        'show-users',
+        'show_annoncement',
+        'show_archive annoncement',
+        'show_comagnies',
+        'show_roles',
+        'show_users',
 
-        'add-annoncement',
-        'add-archive annoncement',
-        'add-comagnies',
-        'add-roles',
-        'add-users',
+        'add_annoncement',
+        'add_archive annoncement',
+        'add_comagnies',
+        'add_roles',
+        'add_users',
 
-        'delete-annoncement',
-        'delete-archive annoncement',
-        'delete-comagnies',
-        'delete-roles',
-        'delete-users',
+        'delete_annoncement',
+        'delete_archive annoncement',
+        'delete_comagnies',
+        'delete_roles',
+        'delete_users',
 
         
-        'update-annoncement',
-        'update-archive annoncement',
-        'update-comagnies',
-        'update-roles',
-        'update-users',
+        'update_annoncement',
+        'update_archive annoncement',
+        'update_comagnies',
+        'update_roles',
+        'update_users',
         
 
 ];

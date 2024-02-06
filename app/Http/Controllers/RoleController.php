@@ -26,7 +26,7 @@ class RoleController extends Controller
 // }
 
 
-    
+
 
 /**
 * Display a listing of the resource.
@@ -47,7 +47,7 @@ return view('Roles.show_roles',compact('roles'))
 public function create()
 {
 $permission = Permission::get();
-return view('roles.create',compact('permission'));
+return view('roles.create_role',compact('permission'));
 }
 /**
 * Store a newly created resource in storage.
