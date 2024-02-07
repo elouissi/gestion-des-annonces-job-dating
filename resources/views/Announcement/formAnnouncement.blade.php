@@ -50,7 +50,16 @@
                 <input class="form-control form-control-lg bg-dark" id="formFileLg" type="file" name="image">
             </div>
         </div>
-      
+        <label for="formFileLg" class="form-label">select recommanded skills</label>
+
+             <div class="form-floating mb-3">
+                 <select name="skills[]" id="skill" multiple>
+                    @foreach($skills as $skill)
+                    <option value="{{ $skill->id }}">{{ $skill->name }} </option>
+                    @endforeach
+                </select>
+            </div>
+       
         <button type="submit"class="btn btn-sm btn-primary">add compagnie</button>
 
        

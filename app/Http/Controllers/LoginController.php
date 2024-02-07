@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Login;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateLoginRequest;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
  use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,9 @@ class LoginController extends Controller
     public function register()
     {
         //
-        return view('Users.register');
+        $skills = Skill::latest()->paginate(20);
+ 
+        return view('Users.register',compact('skills'));
     }
 
     /**
@@ -42,10 +45,10 @@ class LoginController extends Controller
         $user = User::create($input);
         
         // Supposons que vous avez récupéré l'ID des compétences sélectionnées
-        // $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
+        $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
         
-        // // Attachez chaque compétence sélectionnée à l'utilisateur
-        // $user->skills()->attach($selectedSkillIds);
+        // Attachez chaque compétence sélectionnée à l'utilisateur
+        $user->skills()->attach($selectedSkillIds);
         
         $user->assignRole('student');
         auth()->login($user);

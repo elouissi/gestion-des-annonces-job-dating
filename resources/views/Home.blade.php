@@ -62,9 +62,9 @@
                 <nav class="s-header__nav">
     
                     <ul class="s-header__menu-links">
-                        @can('add_annoncement')
+                        
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
-                        @endcan
+                        
                         @auth
                             
                         @can('show_users')

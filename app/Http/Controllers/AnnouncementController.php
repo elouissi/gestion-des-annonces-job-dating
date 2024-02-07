@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Compagnie;
 use App\Http\Requests\AnnouncementRequest;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,10 @@ class AnnouncementController extends Controller
         
         $compagnies = Compagnie::latest()->paginate(100);
         $users = User::latest()->paginate(100);
+        $skills = Skill::latest()->paginate(20);
         
      
-        return view('Announcement.formAnnouncement', compact('compagnies', 'users'));
+        return view('Announcement.formAnnouncement', compact('compagnies', 'users','skills'));
     }
 
     /**
@@ -41,7 +43,11 @@ class AnnouncementController extends Controller
         $form = $request->validated();
          $form['image'] =$request->file('image')->store('announcement','public');
      
-        Announcement::create($form);
+        $announcements = Announcement::create($form);
+        $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
+        
+        // Attachez chaque compétence sélectionnée à l'utilisateur
+        $announcements->skills()->attach($selectedSkillIds);
          return redirect()->route('Compagnies.index')
         ->with('success','announcement created successfully.');
 

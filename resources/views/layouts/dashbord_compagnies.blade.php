@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     
     
+    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -124,6 +125,11 @@
     <script src="{{ asset('js/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{ asset('js/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script>
+        new MultiSelectTag('skill')  // id
+    </script>
+    
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/js/main.js')}}"></script>

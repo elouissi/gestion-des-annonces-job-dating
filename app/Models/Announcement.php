@@ -38,7 +38,7 @@ class Announcement extends Model
     ];
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skills_announcement');
+        return $this->belongsToMany(Skill::class, 'skills_announcements');
     }
 }
 

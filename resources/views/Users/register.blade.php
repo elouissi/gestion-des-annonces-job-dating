@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+
     
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -72,6 +74,15 @@
                             <input type="password" class="form-control" id="floatingPassword" placeholder="confirme password" name="confirm-password" required>
                             <label for="floatingPassword">confirm-password</label>
                         </div>
+                        <div class="form-floating mb-3">
+                            <label for="floatingPassword">selectionner votre skills</label>
+                            <select name="skills[]" id="skill" multiple>
+                                @foreach($skills as $skill)
+                                <option value="{{ $skill->id }}">{{ $skill->name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         @error('email')
                            <span class="text-danger" > {{$message}}</span>
                         @enderror
@@ -102,6 +113,10 @@
     <script src="{{ asset('js/lib/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{ asset('js/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{ asset('js/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('skill')  // id
+</script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/js/main.js')}}"></script>
