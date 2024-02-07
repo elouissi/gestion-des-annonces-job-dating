@@ -51,10 +51,15 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>job dating</h3>
                             </a>
-                            <h3>Log In</h3>
+                            <h3>registre In</h3>
                         </div>
-                        <form action="{{url('/login')}}" method="POST" >
+                        <form action="{{route('register')}}" method="POST" >
                             @csrf
+                     
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name" name="name" required>
+                            <label for="floatingInput">name</label>
+                        </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
                             <label for="floatingInput">Email address</label>
@@ -62,6 +67,10 @@
                         <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
                             <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="confirme password" name="confirm-password" required>
+                            <label for="floatingPassword">confirm-password</label>
                         </div>
                         @error('email')
                            <span class="text-danger" > {{$message}}</span>

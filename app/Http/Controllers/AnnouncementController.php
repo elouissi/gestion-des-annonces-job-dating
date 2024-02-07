@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Compagnie;
 use App\Http\Requests\AnnouncementRequest;
- use App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller

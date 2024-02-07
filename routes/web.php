@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
- use Illuminate\View\AnonymousComponent;
+
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompagnieController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\LoginController;
-use App\Models\Announcement;
+use App\Http\Controllers\RoleController;
+
+// use App\Http\Controllers\RoleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +27,39 @@ Route::fallback(function(){
     return redirect('/');
 });
 
+
+
+Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('form.login');
+Route::middleware('guest')->get('/register', [LoginController::class, 'register'])->name('form.regiter');
+Route::Post('/login', [LoginController::class, 'login'])->name('login');
+Route::Post('/register', [LoginController::class, 'create'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+Route::get('/roles', [RoleController::class, 'index'])->name('roles.index'); // Utiliser le namespace complet une seule fois
+Route::get('/roles/add', [RoleController::class, 'create'])->name('roles.create'); // Utiliser le namespace complet une seule fois
+Route::post('/roles/ajouter', [RoleController::class, 'store'])->name('roles.store');
+Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+Route::get('/roles/{role}', [RoleController::class, 'edit'])->name('roles.edit');  // Utiliser le namespace complet une seule fois
+Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');  // Utiliser le namespace complet une seule fois
+
+
+
+// Route::middleware('auth')->group(function () {
+//     // Route::resource('roles', RoleController::class);
+// });
+// Route::resource('users', \App\Http\controllers\App\Http\Controllers\UserController::class)->middleware('auth');
+Route::middleware('auth')->group(function () {
+Route::get('/users', [UserController::class, 'index'])->name('users.index'); // Utiliser le namespace complet une seule fois
+Route::get('/users/create', [UserController::class, 'show'])->name('users.create'); // Utiliser le namespace complet une seule fois
+Route::post('/users/add', [UserController::class, 'store'])->name('users.store'); // Utiliser le namespace complet une seule fois
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy'); // Utiliser le namespace complet une seule fois
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show'); // Utiliser le namespace complet une seule fois
+Route::put('/users/{user}', [UserController::class, 'edit'])->name('users.edit'); // Utiliser le namespace complet une seule fois
+});
+
+// Route::resource('users', UserController::class)->only(['index']);
 Route::get('/', [CompagnieController::class, 'home'])->name('Compagnies.home');
 Route::get('/dashboard', [CompagnieController::class, 'index'])->name('Compagnies.index');
 Route::get('Compagnies/Add', function () { return   view('Compagnies.formCompagnie');  })->name('Compagnies.formCompagnies');
@@ -39,9 +76,7 @@ Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit
 Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
 
 
-Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('form.login');
-Route::Post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 

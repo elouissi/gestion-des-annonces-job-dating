@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
-use App\Http\Requests\StoreLoginRequest;
-use App\Http\Requests\UpdateLoginRequest;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateLoginRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -19,25 +19,51 @@ class LoginController extends Controller
         //
         return view('Users.log_in');
     }
+    public function register()
+    {
+        //
+        return view('Users.register');
+    }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+         $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+             ]);
+            
+            $input = $request->all();
+            
+            
+            $input['password'] = Hash::make($input['password']);
+            // dd($input);
+            $user = User::create($input);
+            // dd($user);
+            $user->assignRole('student');
+            auth()->login($user);
+
+            return redirect()->route('form.login')
+            ->with('success','bienvenue');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLoginRequest $request)
+    public function store(Request $request)
     {
         //
         Login::create($request->validated());
         return redirect()->route('Compagnies.index')
                         ->with('success','company created successfully.');
     }
+    public function regiter(Request $request){
+
+    } 
 
     /**
      * Display the specified resource.
