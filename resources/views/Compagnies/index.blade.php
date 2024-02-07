@@ -67,8 +67,11 @@
                     @can('show_roles')
                     <a href="{{ route('roles.index') }}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>roles</a>
                     @endcan
+                    @can('show_roles')
+                    <a href="{{ route('skill.index') }}" class="nav-item nav-link"><i class="fa fa-star me-2"></i>skills</a>
+                    @endcan
 
-                    
+                
 
                    
                    

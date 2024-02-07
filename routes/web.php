@@ -81,7 +81,7 @@ Route::get('skill/create', [SkillController::class, 'create'])->name('skill.crea
 Route::post('skill/store', [SkillController::class, 'store'])->name('skill.store');
 Route::delete('skill/{skill}' , [SkillController::class, 'destroy'])->name('skill.destroy');
 Route::get('skill/{skill}' , [SkillController::class, 'edit'])->name('skill.edit');
-Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('skill.update');
+Route::put('skill/{skill}' ,  [SkillController::class, 'update'])->name('skill.update');
 
 
 

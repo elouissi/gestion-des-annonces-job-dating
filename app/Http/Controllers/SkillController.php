@@ -55,7 +55,7 @@ class SkillController extends Controller
         return view('skills.show',compact('skills'))->with('success', 'Bienvenue');
     }
 
-    
+
     /**
      * Display the specified resource.
      */
@@ -70,6 +70,8 @@ class SkillController extends Controller
     public function edit(Skill $skill)
     {
         //
+        return view('skills.edit', compact('skill'));
+
     }
 
     /**
@@ -77,14 +79,25 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+    
+        $skill->update($validatedData);
+    
+        return redirect()->route('skill.index')
+                         ->with('success', 'Skill updated successfully.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Skill $skill)
     {
         //
+              
+        $skill->delete();
+         
+        return redirect()->route('skill.index')
+                        ->with('success','skill deleted successfully');
     }
 }
