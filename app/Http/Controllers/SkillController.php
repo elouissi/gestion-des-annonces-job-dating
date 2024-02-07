@@ -55,6 +55,7 @@ class SkillController extends Controller
         return view('skills.show',compact('skills'))->with('success', 'Bienvenue');
     }
 
+    
     /**
      * Display the specified resource.
      */
