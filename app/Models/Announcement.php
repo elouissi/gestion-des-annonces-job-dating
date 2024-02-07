@@ -36,6 +36,10 @@ class Announcement extends Model
     protected $fillable=[
         "title","content","image","compagnie_id","user_id"
     ];
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'skills_announcement');
+    }
 }
 
 

@@ -36,8 +36,7 @@
         <!-- Spinner Start -->
  
         <!-- Spinner End -->
-{{$compagnies}}
-
+ 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">

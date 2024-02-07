@@ -7,6 +7,7 @@ use App\Http\Controllers\CompagnieController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SkillController;
 
 // use App\Http\Controllers\RoleController;
 
@@ -74,6 +75,13 @@ Route::post('Announcement/store', [AnnouncementController::class, 'store'])->nam
 Route::delete('Announcement/{announcement}' , [AnnouncementController::class, 'destroy'])->name('Announcement.destroy');
 Route::get('Announcement/{announcement}' , [AnnouncementController::class, 'edit'])->name('Announcement.edit');
 Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('Announcement.update');
+
+Route::get('skill/Add', [SkillController::class, 'index'])->name('skill.index');
+Route::get('skill/create', [SkillController::class, 'create'])->name('skill.create');
+Route::post('skill/store', [SkillController::class, 'store'])->name('skill.store');
+Route::delete('skill/{skill}' , [SkillController::class, 'destroy'])->name('skill.destroy');
+Route::get('skill/{skill}' , [SkillController::class, 'edit'])->name('skill.edit');
+Route::put('Announcement/{announcement}' ,  [AnnouncementController::class, 'update'])->name('skill.update');
 
 
 

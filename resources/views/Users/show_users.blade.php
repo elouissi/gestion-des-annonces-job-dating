@@ -25,23 +25,23 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-
-                        <td>{{ $user->roles[0]->name }}</td>
-                         {{-- <td>{{ $user->title }}</td> --}}
-                         @can('show_annoncement')
                         <td>
-
+                            @foreach ($user->roles as $role)
+                                {{ $role->name }}
+                            @endforeach
+                        </td>                        
+                        @can('show_annoncement')
+                        <td>
                             <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                               
-                             <a class="btn btn-success" href="{{ route('users.edit',$user->id) }}">update</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"class="btn btn-primary" >delete</button>
+                                <a class="btn btn-success" href="{{ route('users.edit',$user->id) }}">update</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"class="btn btn-primary" >delete</button>
                             </form>
                         </td>
                         @endcan
-                     </tr>
-                     @endforeach
+                    </tr>
+                    @endforeach
 
                 </tbody>
             </table>

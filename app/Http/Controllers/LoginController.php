@@ -30,25 +30,27 @@ class LoginController extends Controller
      */
     public function create(Request $request)
     {
-        //
-         $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-             ]);
-            
-            $input = $request->all();
-            
-            
-            $input['password'] = Hash::make($input['password']);
-            // dd($input);
-            $user = User::create($input);
-            // dd($user);
-            $user->assignRole('student');
-            auth()->login($user);
-
-            return redirect()->route('form.login')
-            ->with('success','bienvenue');
+        ]);
+        
+        $input = $request->all();
+        
+        $input['password'] = Hash::make($input['password']);
+        $user = User::create($input);
+        
+        // Supposons que vous avez récupéré l'ID des compétences sélectionnées
+        // $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
+        
+        // // Attachez chaque compétence sélectionnée à l'utilisateur
+        // $user->skills()->attach($selectedSkillIds);
+        
+        $user->assignRole('student');
+        auth()->login($user);
+    
+        return redirect()->route('form.login')->with('success', 'Bienvenue');
     }
 
     /**

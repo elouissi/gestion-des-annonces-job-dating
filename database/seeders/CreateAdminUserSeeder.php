@@ -19,8 +19,7 @@ public function run()
         'name' => 'admin', 
         'email' => 'admin@gmail.com',
         'password' => bcrypt('123'),
-        'role_name' => "admin",
-         ]);
+          ]);
   
         $role = Role::create(['name' => 'admin']);
    
