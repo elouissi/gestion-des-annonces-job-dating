@@ -41,7 +41,8 @@ Route::get('/roles', [RoleController::class, 'index'])->name('roles.index'); // 
 Route::get('/roles/add', [RoleController::class, 'create'])->name('roles.create'); // Utiliser le namespace complet une seule fois
 Route::post('/roles/ajouter', [RoleController::class, 'store'])->name('roles.store');
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
-Route::get('/roles/{role}', [RoleController::class, 'show'])->name('roles.edit');  // Utiliser le namespace complet une seule fois
+Route::get('/roles/{role}', [RoleController::class, 'edit'])->name('roles.edit');  // Utiliser le namespace complet une seule fois
+Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');  // Utiliser le namespace complet une seule fois
 
 
 

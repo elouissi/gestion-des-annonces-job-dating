@@ -62,11 +62,17 @@
                 <nav class="s-header__nav">
     
                     <ul class="s-header__menu-links">
+                        @can('add_annoncement')
                         <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
+                        @endcan
                         @auth
                             
-                  
+                        @can('show_users')
                         <li><a href="{{route('Compagnies.index')}}" class="smoothscroll">dashboard</a></li>
+                        @endcan
+                        @can('show_annoncement')
+                        <li><a href="{{route('Compagnies.index')}}" class="smoothscroll">my appliment</a></li>
+                        @endcan
                         @endauth
                         {{-- <li><a href="#services" class="smoothscroll">Services</a></li>
                         <li><a href="#folio" class="smoothscroll">Work</a></li>

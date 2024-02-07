@@ -1,4 +1,4 @@
-@extends('Compagnies.create')
+@extends('layouts.dashboard_users')
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
@@ -28,7 +28,9 @@
 
                         <td>{{ $user->roles[0]->name }}</td>
                          {{-- <td>{{ $user->title }}</td> --}}
+                         @can('show_annoncement')
                         <td>
+
                             <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                
                              <a class="btn btn-success" href="{{ route('users.edit',$user->id) }}">update</a>
@@ -37,6 +39,7 @@
                             <button type="submit"class="btn btn-primary" >delete</button>
                             </form>
                         </td>
+                        @endcan
                      </tr>
                      @endforeach
 

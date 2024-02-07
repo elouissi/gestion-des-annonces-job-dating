@@ -1,4 +1,4 @@
-@extends('Compagnies.create')
+@extends('layouts.dashbord_compagnies')
 @section('content')
 <form action="{{ route('compagnies.update', $compagnie->id)}}" method="POST">
     @csrf

@@ -1,4 +1,4 @@
-@extends('Compagnies.create')
+@extends('layouts.dashboard_users')
 @section('content')
 @if ($errors->any())
 <div class="alert alert-danger">

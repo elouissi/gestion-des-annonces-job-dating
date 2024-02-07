@@ -12,27 +12,32 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('roles.store')}}" method="POST">
+<form action="{{ route('roles.update', $role->id)}}" method="POST">
     @csrf
- <div class="col-sm-12 col-xl-6" style="margin: auto">
+    @method('PUT')
+
+  <div class="col-sm-12 col-xl-6" style="margin: auto">
     <div class="bg-secondary rounded h-100 p-4">
-        <h6 class="mb-4">add </h6>
+        <h6 class="mb-4">update role </h6>
         <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="floatingInput"
-                placeholder="name">
+                placeholder="name" value="{{$role->name}}">
             <label for="floatingInput">name</label>
         </div>
- 
+    
         <div class="form-floating mb-3">
             <select name="permission[]" id="permission" multiple>
-                @foreach($permission as $one)
-                <option value="{{ $one->name }}">{{ $one->name }} </option>
+           
+                @foreach($permissions as $filtration)
+                    
+                    <option   value="{{ $filtration->name }}" {{ in_array($filtration->id, $role->permissions->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $filtration->name }}</option>
+               
                 @endforeach
             </select>
         </div>
         
        
-        <button type="submit"class="btn btn-sm btn-primary">add role</button>
+        <button type="submit"class="btn btn-sm btn-primary">update</button>
 
        
     </div>
