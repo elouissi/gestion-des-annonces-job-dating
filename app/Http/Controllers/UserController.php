@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -17,12 +17,16 @@ class UserController extends Controller
 */
 public function index(Request $request)
 {
+
 $data = User::orderBy('id','DESC')->paginate(5);
 return view('users.show_users',compact('data'))
 ->with('i', ($request->input('page', 1) - 1) * 5);
 
 }
-
+public function show(){
+    $roles = Role::orderBy('id','DESC')->paginate(5);
+    return view('users.add_user',compact('roles')); 
+}
 
 /**
 * Show the form for creating a new resource.
@@ -44,11 +48,11 @@ return view('users.Add_user',compact('roles'));
 */
 public function store(Request $request)
 {
-$this->validate($request, [
+ $this->validate($request, [
 'name' => 'required',
 'email' => 'required|email|unique:users,email',
 'password' => 'required|same:confirm-password',
-'roles_name' => 'required'
+'role_name' => 'required'
 ]);
 
 $input = $request->all();
@@ -57,9 +61,9 @@ $input = $request->all();
 $input['password'] = Hash::make($input['password']);
 
 $user = User::create($input);
-$user->assignRole($request->input('roles_name'));
-return redirect()->route('compagnies.index')
-->with('success','bienvenue');
+$user->assignRole($request->input('role_name'));
+return redirect()->route('users.index')->with('success','user created successfully.');
+
 }
 
 /**

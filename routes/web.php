@@ -48,7 +48,8 @@ Route::get('/roles/add', [RoleController::class, 'create'])->name('roles.create'
 // Route::resource('users', \App\Http\controllers\App\Http\Controllers\UserController::class)->middleware('auth');
 Route::middleware('auth')->group(function () {
 Route::get('/users', [UserController::class, 'index'])->name('users.index'); // Utiliser le namespace complet une seule fois
-Route::post('/users/add', [UserController::class, 'store']); // Utiliser le namespace complet une seule fois
+Route::get('/users/create', [UserController::class, 'show'])->name('users.create'); // Utiliser le namespace complet une seule fois
+Route::post('/users/add', [UserController::class, 'store'])->name('users.store'); // Utiliser le namespace complet une seule fois
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy'); // Utiliser le namespace complet une seule fois
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show'); // Utiliser le namespace complet une seule fois
 Route::put('/users/{user}', [UserController::class, 'edit'])->name('users.edit'); // Utiliser le namespace complet une seule fois

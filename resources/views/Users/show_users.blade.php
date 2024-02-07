@@ -4,7 +4,7 @@
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">compagnies</h6>
-             <a class="btn btn-sm btn-primary" href="{{ route('Compagnies.formCompagnies') }}">add compagnie</a>
+             <a class="btn btn-sm btn-primary" href="{{ route('users.create') }}">add users</a>
         </div>
  
         <div class="table-responsive">
@@ -25,13 +25,13 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
+
+                        <td>{{ $user->role_name }}</td>
                          {{-- <td>{{ $user->title }}</td> --}}
                         <td>
                             <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                
-                            <a class="btn btn-success" href="{{ route('users.show',$user->id) }}">show</a>
-                            <a class="btn btn-success" href="{{ route('users.edit',$user->id) }}">update</a>
+                             <a class="btn btn-success" href="{{ route('users.edit',$user->id) }}">update</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit"class="btn btn-primary" >delete</button>

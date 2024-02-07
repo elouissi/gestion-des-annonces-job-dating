@@ -1,6 +1,7 @@
 
 @extends('Compagnies.create')
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
 @if ($errors->any())
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -21,10 +22,13 @@
                 placeholder="name">
             <label for="floatingInput">name</label>
         </div>
+ 
         <div class="form-floating mb-3">
-            <input type="address" name="address" class="form-control" id="floatingPassword"
-                placeholder="address">
-            <label for="floatingInput">address</label>
+            <select name="permission" id="permission" multiple>
+                @foreach($permission as $one)
+                <option value="{{ $one->id }}">{{ $one->name }} </option>
+                @endforeach
+            </select>
         </div>
         
        
@@ -34,4 +38,8 @@
     </div>
 </div>
 </form>
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('permission')  // id
+</script>
 @endsection

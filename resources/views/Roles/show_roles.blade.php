@@ -19,14 +19,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                     
                     @foreach ($roles as $key => $role)                    
                     <tr>
                         <td>{{ $role->name }}</td>
-                        <td>{{ $role->email }}</td>
-                        <td>{{ $role->role }}</td>
-                         {{-- <td>{{ $role->title }}</td> --}}
-                        <td>
+                  
+                        <td >
+                            @foreach($permissions as $permission)
+                                {{$permission->name."//"}}
+                            @endforeach
+                            </td>                      
+                         <td>
                             {{-- <form action="{{ route('roles.destroy',$role->id) }}" method="POST">
                                
                             <a class="btn btn-success" href="{{ route('roles.show',$role->id) }}">show</a>

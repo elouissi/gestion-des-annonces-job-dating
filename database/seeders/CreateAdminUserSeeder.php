@@ -16,13 +16,13 @@ public function run()
 {
     
          $user = User::create([
-        'name' => 'student', 
-        'email' => 'student@gmail.com',
+        'name' => 'admin', 
+        'email' => 'admin@gmail.com',
         'password' => bcrypt('123'),
-        'role_name' => "student",
+        'role_name' => "admin",
          ]);
   
-        $role = Role::create(['name' => 'student']);
+        $role = Role::create(['name' => 'admin']);
    
         $permissions = Permission::pluck('id','id')->all();
   
