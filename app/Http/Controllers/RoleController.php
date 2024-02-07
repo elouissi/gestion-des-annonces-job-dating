@@ -36,7 +36,7 @@ class RoleController extends Controller
 public function index(Request $request)
 {
 $permissions = Permission::get();
-$roles = Role::orderBy('id','DESC')->paginate(5);
+$roles = Role::orderBy('id','DESC')->paginate(9);
 return view('Roles.show_roles',compact('roles','permissions'))
 ->with('i', ($request->input('page', 1) - 1) * 5);
 }
@@ -62,8 +62,9 @@ $this->validate($request, [
 'name' => 'required|unique:roles,name',
 'permission' => 'required',
 ]);
+
 $role = Role::create(['name' => $request->input('name')]);
-$role->syncPermissions($request->input('permission'));
+ $role->syncPermissions($request->input('permission'));
 return redirect()->route('roles.index')
 ->with('success','Role created successfully');
 }

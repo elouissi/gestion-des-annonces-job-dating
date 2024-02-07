@@ -26,7 +26,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
 
-                        <td>{{ $user->role_name }}</td>
+                        <td>{{ $user->roles[0]->name }}</td>
                          {{-- <td>{{ $user->title }}</td> --}}
                         <td>
                             <form action="{{ route('users.destroy',$user->id) }}" method="POST">

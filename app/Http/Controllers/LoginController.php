@@ -35,16 +35,19 @@ class LoginController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            ]);
+             ]);
             
             $input = $request->all();
             
             
             $input['password'] = Hash::make($input['password']);
-            
+            // dd($input);
             $user = User::create($input);
-            $user->assignRole($request->input('roles_name'));
-            return redirect()->route('compagnies.index')
+            // dd($user);
+            $user->assignRole('student');
+            auth()->login($user);
+
+            return redirect()->route('form.login')
             ->with('success','bienvenue');
     }
 

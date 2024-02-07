@@ -12,7 +12,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('compagnies.store')}}" method="POST">
+<form action="{{ route('roles.store')}}" method="POST">
     @csrf
  <div class="col-sm-12 col-xl-6" style="margin: auto">
     <div class="bg-secondary rounded h-100 p-4">
@@ -24,9 +24,9 @@
         </div>
  
         <div class="form-floating mb-3">
-            <select name="permission" id="permission" multiple>
+            <select name="permission[]" id="permission" multiple>
                 @foreach($permission as $one)
-                <option value="{{ $one->id }}">{{ $one->name }} </option>
+                <option value="{{ $one->name }}">{{ $one->name }} </option>
                 @endforeach
             </select>
         </div>

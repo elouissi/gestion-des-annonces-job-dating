@@ -57,7 +57,7 @@
                             @csrf
                      
                         <div class="form-floating mb-3">
-                            <input type="name" class="form-control" id="floatingInput" placeholder="name" name="email" required>
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name" name="name" required>
                             <label for="floatingInput">name</label>
                         </div>
                         <div class="form-floating mb-3">

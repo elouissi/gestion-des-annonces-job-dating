@@ -25,19 +25,17 @@
                         <td>{{ $role->name }}</td>
                   
                         <td >
-                            @foreach($permissions as $permission)
-                                {{$permission->name."//"}}
-                            @endforeach
-                            </td>                      
+                            @foreach ($role->permissions as $permission)
+                            {{ $permission->name }}
+                        @endforeach                             </td>                      
                          <td>
-                            {{-- <form action="{{ route('roles.destroy',$role->id) }}" method="POST">
+                            <form action="{{ route('roles.destroy',$role->id) }}" method="POST">
                                
-                            <a class="btn btn-success" href="{{ route('roles.show',$role->id) }}">show</a>
-                            <a class="btn btn-success" href="{{ route('roles.edit',$role->id) }}">update</a>
+                             <a class="btn btn-success" href="{{ route('roles.edit',$role->id) }}">update</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit"class="btn btn-primary" >delete</button>
-                            </form> --}}
+                            </form>
                         </td>
                      </tr>
                      @endforeach
