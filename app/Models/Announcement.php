@@ -20,14 +20,7 @@ class Announcement extends Model
     {
         return $this->belongsTo(Compagnie::class);
     }
-    // public static function boot ()  {
-    //     parent::boot();
-    //     static::deleting(function(Announcement $announcement){
-    //         $announcement->compagnie()->delete();
-            
-    //     });
-        
-    // }
+ 
     
     use HasFactory;
     use SoftDeletes;
@@ -36,6 +29,7 @@ class Announcement extends Model
     protected $fillable=[
         "title","content","image","compagnie_id","user_id"
     ];
+
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'skills_announcements');
