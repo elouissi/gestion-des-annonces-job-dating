@@ -146,50 +146,98 @@
 
             <!-- about
             ----------------------------------------------- -->
+            @can('show_users')
             <section id="about" class="s-about target-section">
-
-                
-                <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole ">
-    @foreach ($announcements as $announcement)
-        
-                    <div class="column list-block__item">
-                        <div class="entry__thumb">
-                            <img src="{{ asset( 'storage/'.$announcement->image) }}" alt="">
-                        </div>
-                        <div class="list-block__title">
-                            <h3 class="h5">title: {{ $announcement->title }}</h3>
-                        </div>
-                        <div class="list-block__text d-flex">
-                            <p>
-                               content :  {{ $announcement->content }} <br>
-                               compagny name :  {{ $announcement->compagnie->name  }}
-                               <br>
-                               <strong>skills recommended:</strong>,
-                               @foreach($announcement->skills as $skill)
-                                     <code>{{$skill->name}}</code>
-                                     @endforeach 
-                            </p>
-                            @can('show_annoncement')
-
-                            <a class="btn btn--primary u-fullwidth" href="{{route('logout')}}">aplly</a>
-                            @endcan
-
- 
-                        
-                        </div>
-
-                  
-                    </div> <!-- end list-block__item -->
-
+                <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole">
+                    @foreach ($announcements as $announcement)
+                        <div class="column list-block__item">
+                            <div class="entry__thumb">
+                                <img src="{{ asset('storage/'.$announcement->image) }}" alt="">
+                            </div>
+                            <div class="list-block__title">
+                                <h3 class="h5">title: {{ $announcement->title }}</h3>
+                            </div>
+                            <div class="list-block__text d-flex">
+                                <p>
+                                    content: {{ $announcement->content }} <br>
+                                    company name: {{ $announcement->compagnie->name }} <br>
+                                    <strong>skills recommended:</strong>,
+                                    @foreach($announcement->skills as $skill)
+                                        <code>{{ $skill->name }}</code>
+                                    @endforeach
+                                </p>
+                                @can('show_annoncement')
+                                    <a class="btn btn--primary u-fullwidth" href="{{ route('logout') }}">apply</a>
+                                @endcan
+                            </div>
+                        </div> <!-- end list-block__item -->
                     @endforeach
-
-                   
                 </div> <!-- end process-list -->
-
             </section> <!-- end s-about -->
+        @endcan
 
- 
+        <!-- pour les etudiants -->
+            @can('show_annoncement')
+            <section id="about" class="s-about target-section">
+                <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole">
+                    @foreach ($announcementsfilter as $announcement)
+                        <div class="column list-block__item">
+                            <div class="entry__thumb">
+                                <img src="{{ asset('storage/'.$announcement->image) }}" alt="">
+                            </div>
+                            <div class="list-block__title">
+                                <h3 class="h5">title: {{ $announcement->title }}</h3>
+                            </div>
+                            <div class="list-block__text d-flex">
+                                <p>
+                                    content: {{ $announcement->content }} <br>
+                                    company name: {{ $announcement->compagnie->name }} <br>
+                                    <strong>skills recommended:</strong>,
+                                    @foreach($announcement->skills as $skill)
+                                        <code>{{ $skill->name }}</code>
+                                    @endforeach
+                                </p>
+                                @can('show_annoncement')
+                                    <a class="btn btn--primary u-fullwidth" href="{{ route('logout') }}">apply</a>
+                                @endcan
+                            </div>
+                        </div> <!-- end list-block__item -->
+                    @endforeach
+                </div> <!-- end process-list -->
+            </section> <!-- end s-about -->
+        @endcan
 
+        <!-- pour les visiteurs -->
+        @guest
+            <section id="about" class="s-about target-section">
+                <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole">
+                    @foreach ($announcements as $announcement)
+                        <div class="column list-block__item">
+                            <div class="entry__thumb">
+                                <img src="{{ asset('storage/'.$announcement->image) }}" alt="">
+                            </div>
+                            <div class="list-block__title">
+                                <h3 class="h5">title: {{ $announcement->title }}</h3>
+                            </div>
+                            <div class="list-block__text d-flex">
+                                <p>
+                                    content: {{ $announcement->content }} <br>
+                                    company name: {{ $announcement->compagnie->name }} <br>
+                                    <strong>skills recommended:</strong>,
+                                    @foreach($announcement->skills as $skill)
+                                        <code>{{ $skill->name }}</code>
+                                    @endforeach
+                                </p>
+                                @can('show_annoncement')
+                                    <a class="btn btn--primary u-fullwidth" href="{{ route('logout') }}">apply</a>
+                                @endcan
+                            </div>
+                        </div> <!-- end list-block__item -->
+                    @endforeach
+                </div> <!-- end process-list -->
+            </section> <!-- end s-about -->
+            @endguest
+        
           
 
     

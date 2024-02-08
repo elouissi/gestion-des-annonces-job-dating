@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
@@ -95,27 +96,42 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
 // */
-    // public function update(Request $request, $id)
-    // {
-    // $this->validate($request, [
-    // 'name' => 'required',
-    // 'email' => 'required|email|unique:users,email,'.$id,
-    // 'password' => 'same:confirm-password',
-    // 'roles' => 'required'
-    // ]);
-    // $input = $request->all();
-    // if(!empty($input['password'])){
-    // $input['password'] = Hash::make($input['password']);
-    // }else{
-    // $input = array_except($input,array('password'));
-    // }
-    // $user = User::find($id);
-    // $user->update($input);
-    // DB::table('model_has_roles')->where('model_id',$id)->delete();
-    // $user->assignRole($request->input('roles'));
-    // return redirect()->route('users.index')
-    // ->with('success','تم تحديث معلومات المستخدم بنجاح');
-    // }
+public function update(Request $request, $id)
+{
+    // Validation rules
+    $this->validate($request, [
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,'.$id,
+         'roles' => 'required'
+    ]);
+
+    // Retrieve all input data
+    $input = $request->all();
+
+ 
+
+    // Find user by ID
+    $user = User::find($id);
+
+    // Update user with new input data
+    $user->update($input);
+
+    // Remove existing roles for the user
+    DB::table('model_has_roles')->where('model_id', $id)->delete();
+    DB::table('skills_users')->where('users_id', $id)->delete();
+
+    // Assign new roles to the user
+    $user->assignRole($request->input('roles'));
+    
+    $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
+        
+    // Attachez chaque compétence sélectionnée à l'utilisateur
+    $user->skills()->attach($selectedSkillIds);
+    // Redirect with success message
+    return redirect()->route('users.index')
+                     ->with('success', 'vous avez mofier correctement');
+}
+
     // /**
     // * Remove the specified resource from storage.
     // *

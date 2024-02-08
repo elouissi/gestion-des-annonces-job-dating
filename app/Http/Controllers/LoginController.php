@@ -9,6 +9,7 @@ use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
  use Illuminate\Support\Facades\Auth;
+ use Spatie\Permission\Models\Role;
 
 class LoginController extends Controller
 {
@@ -67,9 +68,10 @@ class LoginController extends Controller
                         ->with('success','company created successfully.');
     }
     public function profile(){
+        $roles = Role::orderBy('id', 'DESC')->paginate(9);
+        $skills = Skill::latest()->paginate(20);
 
-        return view('Users.profile');
-
+        return view('Users.profile',compact('roles','skills'));
 
     } 
 
