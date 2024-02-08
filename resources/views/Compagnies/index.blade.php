@@ -49,10 +49,12 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
+                        <a href="{{route('profile')}}">
                         <h6 class="mb-0">{{auth()->user()->name}}</h6>
                         @foreach(auth()->user()->roles as $role)
                         <span>{{ $role->name }}</span>
-                    @endforeach                   
+                    @endforeach 
+                </a>                  
                  </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -238,27 +240,38 @@
                                     <th scope="col">Content</th>
                                     <th scope="col">Company Name</th>
                                     <th scope="col">User Name</th>
+                                    <th scope="col">skills Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($announcements as $announcement)
-                                    <tr>
-                                        <td>{{ $announcement->title }}</td>
-                                        <td>{{ $announcement->content }}</td>
-                                        <td>{{ $announcement->compagnie->name }}</td>
-                                        <td>{{ $announcement->user->name }}</td>
-                                        <td>
-                                            <form action="{{ route('Announcement.destroy', $announcement->id) }}" method="POST">
-                                                <a class="btn btn-success" href="{{ route('Announcement.edit', $announcement->id) }}">Update</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-primary">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                 <tbody>
+                                    @foreach ($announcements as $announcement)
+                                        <tr>
+                                            <td>{{ $announcement->title }}</td>
+                                            <td>{{ $announcement->content }}</td>
+                                            <td>{{ $announcement->compagnie->name }}</td>
+                                            <td>{{ $announcement->user->name }}</td>
+                                            <td>
+                                                @foreach($announcement->skills as $skill)
+                                                    <span style="color: aliceblue" class="skill-background-{{ $loop->index }}">{{ $skill->name }}</span>
+                                                    @unless($loop->last)
+                                                        <br> <!-- Ajoutez une ligne vide sauf pour la dernière compétence -->
+                                                    @endunless
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('Announcement.destroy', $announcement->id) }}" method="POST">
+                                                    <a class="btn btn-success" href="{{ route('Announcement.edit', $announcement->id) }}">Update</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                
+                             
                         </table>
                     </div>
                 </div>

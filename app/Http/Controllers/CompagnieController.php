@@ -6,7 +6,7 @@ use App\Models\Compagnie;
 use App\Models\Announcement;
 use App\Http\Requests\CompagnieRequest;
 use App\Http\Requests\UpdateCompagnieRequest;
-
+use Illuminate\Support\Facades\DB;
 
 class CompagnieController extends Controller
 {
@@ -30,7 +30,25 @@ class CompagnieController extends Controller
         //
      
             $compagnies = Compagnie::latest()->paginate(100);
+
+            if (auth()->check() && auth()->user()->hasRoles('student')) {
+                $userSkills = auth()->user()->skills->pluck('id');
+            $halfSkillsCount = $userSkills->count() / 2;
+            $announcements = Announcement::whereExists(function ($query) use ($userSkills, $halfSkillsCount) {
+                $query->select(DB::raw(1))
+                      ->from('skills')
+                      ->join('skills_announcements', 'skills.id', '=', 'skills_announcements.skill_id')
+                      ->whereColumn('announcements.id', 'skills_announcements.announcement_id')
+                      ->whereIn('skills.id', $userSkills)
+                      ->groupBy('skills_announcements.announcement_id')
+                      ->havingRaw('COUNT(*) >= ?', [$halfSkillsCount]);
+            })->whereNull('announcements.deleted_at')->get();
+        }else{
             $announcements = Announcement::with('user','compagnie')->latest()->paginate(100);
+
+        }
+
+ 
         
             return view('Home', compact('compagnies', 'announcements'))
                         ->with('i', (request()->input('page', 1) - 1) * 100);

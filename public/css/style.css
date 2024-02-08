@@ -5,6 +5,20 @@
     --light: #6C7293;
     --dark: #000000;
 }
+.skill-background-0 {
+    background-color: #6C7293; /* Rouge clair */
+}
+
+.skill-background-1 {
+    background-color: #6C7293; /* Vert clair */
+}
+
+.skill-background-2 {
+    background-color: #6C7293; /* Bleu clair */
+}
+
+/* Ajoutez autant de classes que nécessaire pour couvrir tous les index de boucle */
+
 
 .back-to-top {
     position: fixed;
@@ -28,6 +42,7 @@
     visibility: visible;
     opacity: 1;
 }
+
 
 
 /*** Button ***/

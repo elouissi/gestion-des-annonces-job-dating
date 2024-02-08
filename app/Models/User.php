@@ -18,6 +18,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use HasRoles;
+
     protected $fillable = [
         'name',
         'email',

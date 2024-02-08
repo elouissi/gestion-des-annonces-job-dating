@@ -13,9 +13,8 @@ class Skill extends Model
         "name"
       ];
 
-    public function User()  {
+    public function User()  { 
         
-
         return $this->belongsToMany(User::class ,'skills_users' );
     }
     public function Announcement()  {

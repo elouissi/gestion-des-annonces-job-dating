@@ -163,10 +163,22 @@
                             <p>
                                content :  {{ $announcement->content }} <br>
                                compagny name :  {{ $announcement->compagnie->name  }}
+                               <br>
+                               <strong>skills recommended:</strong>,
+                               @foreach($announcement->skills as $skill)
+                                     <code>{{$skill->name}}</code>
+                                     @endforeach 
                             </p>
-                      
+                            @can('show_annoncement')
 
+                            <a class="btn btn--primary u-fullwidth" href="{{route('logout')}}">aplly</a>
+                            @endcan
+
+ 
+                        
                         </div>
+
+                  
                     </div> <!-- end list-block__item -->
 
                     @endforeach

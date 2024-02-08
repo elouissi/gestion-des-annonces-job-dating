@@ -57,25 +57,29 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">yassin elouissi</h6>
-                        <span>Admin</span>
-                    </div>
+                        <a href="{{route('profile')}}">
+                        <h6 class="mb-0">{{auth()->user()->name}}</h6>
+                        @foreach(auth()->user()->roles as $role)
+                        <span>{{ $role->name }}</span>
+                    @endforeach 
+                </a>                  
+                 </div>
                 </div>
                 <div class="navbar-nav w-100">
+                    @can('add_annoncement')
+                    <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    @endcan
 
-
-                    <a href="{{ url('/dashboard') }}" class="nav-item nav-link  "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> 
-
+                    @can('show_users')
                     <a href="{{ route('users.index') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>users</a>
-                    <a href="{{ route('roles.index') }}" class="nav-item nav-link active"><i class="fa fa-user me-2"></i>roles</a>
-                    <a href="{{ route('skill.index') }}" class="nav-item nav-link  "><i class="fa fa-star me-2"></i>skills</a>
+                    @endcan
 
-        
-
-                   
-                   
-              
-                    
+                    @can('show_roles')
+                    <a href="{{ route('roles.index') }}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>roles</a>
+                    @endcan
+                    @can('show_roles')
+                    <a href="{{ route('skill.index') }}" class="nav-item nav-link"><i class="fa fa-star me-2"></i>skills</a>
+                    @endcan 
                 </div>
             </nav>
         </div>

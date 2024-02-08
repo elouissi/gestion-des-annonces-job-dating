@@ -23,8 +23,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 550px;
-  height: 600px;
+  width: 800px;
+  height: 500px;
   border-radius: 10px;
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
   background: #151515;
@@ -35,7 +35,7 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    width: 550px;
+    width: 800px;
     height: 80px;
     background: #EB1616;
     animation: dsTop 1.5s;
@@ -65,8 +65,7 @@ body {
   }
   .name {
     position: absolute;
-    margin: auto;
-    top: -60px;
+     top: 150px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -126,14 +125,14 @@ body {
     margin: auto;
     top: 50px;
     bottom: 0;
-    right: 0;
+    right: 50px;
     left: 0;
     width: inherit;
     height: 40px;
     display: flex;
     .pens, .projects, .posts {
       position: relative;
-      left: -300px;
+      left: 0px;
       width: calc(250px / 3);
       text-align: center;
       color: white;
@@ -159,11 +158,11 @@ body {
   .ds-skill {
     position: absolute;
     margin: auto;
-    bottom: 10px;
+    bottom: -120px;
     right: 0;
     left: 0;
-    width: 200px;
-    height: 100px;
+    width: 600px;
+    height: 300px;
     animation: mvBottom 1.5s;
     h6 {
       margin-bottom: 5px;
@@ -172,7 +171,7 @@ body {
       color: #EB1616;
     }
     .skill {
-      h6 {
+      h6 {  
         font-weight: 400;
         font-size: 8px;
         letter-spacing: 0.05em;

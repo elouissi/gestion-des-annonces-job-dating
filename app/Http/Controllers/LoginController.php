@@ -66,7 +66,10 @@ class LoginController extends Controller
         return redirect()->route('Compagnies.index')
                         ->with('success','company created successfully.');
     }
-    public function regiter(Request $request){
+    public function profile(){
+
+        return view('Users.profile');
+
 
     } 
 
