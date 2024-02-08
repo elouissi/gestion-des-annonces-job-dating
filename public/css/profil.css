@@ -163,7 +163,7 @@ body {
     left: 0;
     width: 600px;
     height: 300px;
-    animation: mvBottom 1.5s;
+    animation: mvTop 1.5s;
     h6 {
       margin-bottom: 5px;
       font-weight: 700;
@@ -247,14 +247,10 @@ body {
 }
 
 @keyframes mvBottom {
-  0% {bottom: -150px;}
-  100% {bottom: 10px;}
+  0% {bottom: -10px;}
+  100% {bottom: -50px;}
 }
-
-@keyframes mvTop {
-  0% {top: -150px;}
-  100% {top: 40px;}
-}
+ 
 
 @keyframes dsTop {
   0% {top: -150px;}

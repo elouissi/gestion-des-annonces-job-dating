@@ -102,8 +102,7 @@ public function update(Request $request, $id)
     $this->validate($request, [
         'name' => 'required',
         'email' => 'required|email|unique:users,email,'.$id,
-         'roles' => 'required'
-    ]);
+      ]);
 
     // Retrieve all input data
     $input = $request->all();
@@ -117,18 +116,18 @@ public function update(Request $request, $id)
     $user->update($input);
 
     // Remove existing roles for the user
-    DB::table('model_has_roles')->where('model_id', $id)->delete();
-    DB::table('skills_users')->where('users_id', $id)->delete();
+    // DB::table('model_has_roles')->where('model_id', $id)->delete();
+    DB::table('skills_users')->where('user_id', $id)->delete();
 
     // Assign new roles to the user
-    $user->assignRole($request->input('roles'));
-    
+    // $user->assignRole($request->input('roles'));
+     
     $selectedSkillIds = $request->input('skills'); // Supposons que 'skills' soit le nom du champ dans le formulaire qui contient les compétences sélectionnées
         
     // Attachez chaque compétence sélectionnée à l'utilisateur
     $user->skills()->attach($selectedSkillIds);
     // Redirect with success message
-    return redirect()->route('users.index')
+    return redirect()->route('profile')
                      ->with('success', 'vous avez mofier correctement');
 }
 

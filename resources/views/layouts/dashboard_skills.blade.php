@@ -67,7 +67,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     @can('add_annoncement')
-                    <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @endcan
 
                     @can('show_users')
@@ -78,7 +78,7 @@
                     <a href="{{ route('roles.index') }}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>roles</a>
                     @endcan
                     @can('show_roles')
-                    <a href="{{ route('skill.index') }}" class="nav-item nav-link"><i class="fa fa-star me-2"></i>skills</a>
+                    <a href="{{ route('skill.index') }}" class="nav-item nav-link active"><i class="fa fa-star me-2"></i>skills</a>
                     @endcan 
                 </div>
             </nav>

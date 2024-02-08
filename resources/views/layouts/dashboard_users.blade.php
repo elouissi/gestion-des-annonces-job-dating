@@ -67,11 +67,11 @@
                 </div>
                 <div class="navbar-nav w-100">
                     @can('add_annoncement')
-                    <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ route('Compagnies.index') }}" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @endcan
 
                     @can('show_users')
-                    <a href="{{ route('users.index') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>users</a>
+                    <a href="{{ route('users.index') }}" class="nav-item nav-link active"><i class="fa fa-users me-2"></i>users</a>
                     @endcan
 
                     @can('show_roles')

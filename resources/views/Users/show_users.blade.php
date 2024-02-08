@@ -3,7 +3,7 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">compagnies</h6>
+            <h6 class="mb-0">users</h6>
              <a class="btn btn-sm btn-primary" href="{{ route('users.create') }}">add users</a>
         </div>
  
