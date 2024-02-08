@@ -179,6 +179,7 @@
         <!-- pour les etudiants -->
             @can('show_annoncement')
             <section id="about" class="s-about target-section">
+                
                 <div class="row process-list list-block show-ctr block-lg-one-half block-tab-whole">
                     @foreach ($announcementsfilter as $announcement)
                         <div class="column list-block__item">
@@ -198,7 +199,7 @@
                                     @endforeach
                                 </p>
                                 @can('show_annoncement')
-                                    <a class="btn btn--primary u-fullwidth" href="{{ route('logout') }}">apply</a>
+                                <a class="btn btn--primary u-fullwidth" href="{{ route('applyment', $announcement->id) }}">Postuler</a>
                                 @endcan
                             </div>
                         </div> <!-- end list-block__item -->

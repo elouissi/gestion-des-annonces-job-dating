@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -141,5 +142,22 @@ public function update(Request $request, $id)
     // {
     // User::find($request->user_id)->delete();
     // return redirect()->route('users.index')->with('success','تم حذف المستخدم بنجاح');
-    // }
+ public function applyment(Announcement $announcement, $id) {
+    // Récupérer l'ID de l'utilisateur authentifié
+    $userId = auth()->id();
+    
+    // Vérifier si l'utilisateur est déjà inscrit à cette annonce
+    if ($announcement->users()->where('user_id', $userId)->exists()) {
+        return redirect()->back()->with('error', 'Vous êtes déjà inscrit à cette annonce.');
+    }
+    
+    // Joindre l'utilisateur à l'annonce avec l'ID de l'annonce
+    $announcement->users()->attach($userId, ['announcement_id' => $id]);
+    
+    // Redirection avec un message de succès
+    return redirect(route('Compagnies.home'))->with('success', 'Vous avez postulé avec succès à cette annonce.');
+}
+
+    
+    
 }

@@ -9,7 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Announcement extends Model
 {
-   
+       
+    use HasFactory;
+    use SoftDeletes;
+
+    protected $table='announcements';
+    protected $fillable=[
+        "title","content","image","compagnie_id","user_id"
+    ];
 
 
     public function user()
@@ -21,18 +28,15 @@ class Announcement extends Model
         return $this->belongsTo(Compagnie::class);
     }
  
-    
-    use HasFactory;
-    use SoftDeletes;
 
-    protected $table='announcements';
-    protected $fillable=[
-        "title","content","image","compagnie_id","user_id"
-    ];
 
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'skills_announcements');
+    }
+     public function users()  {
+
+        return $this->belongsToMany(User::class,'applyment');
     }
 }
 

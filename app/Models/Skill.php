@@ -21,4 +21,5 @@ class Skill extends Model
 
         return $this->belongsToMany(Announcement::class,'skills_announcements');
     }
+  
 }
