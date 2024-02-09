@@ -15,14 +15,20 @@ class CompagnieController extends Controller
      */
     public function index()
     {
-        //
-     
-            $compagnies = Compagnie::latest()->paginate(100);
-            $announcements = Announcement::with('user','compagnie')->latest()->paginate(100);
-        
-            return view('Compagnies.index', compact('compagnies', 'announcements'))
-                        ->with('i', (request()->input('page', 1) - 1) * 100);
-        
+        $compagnies = Compagnie::latest()->paginate(100);
+        $applyments = Announcement::with('user', 'compagnie', 'users')->latest()->paginate(100);
+        $user = auth()->user(); // Récupérer l'utilisateur actuel, par exemple via l'authentification
+        $userApplyments = $user->users()->with('compagnie')->get();
+        // Boucle à travers les applyments pour obtenir les noms des annonces
+        foreach ($applyments as $applyment) {
+            foreach ($applyment->users as $user) {
+                $announcementName = Announcement::find($user->pivot->announcement_id)->title;
+                $user->announcement_name = $announcementName;
+            }
+        }
+    
+        return view('Compagnies.index', compact('compagnies', 'applyments','userApplyments'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
     }
     
     public function home()

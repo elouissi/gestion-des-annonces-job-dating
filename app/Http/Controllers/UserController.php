@@ -134,14 +134,7 @@ public function update(Request $request, $id)
 
     // /**
     // * Remove the specified resource from storage.
-    // *
-    // * @param  int  $id
-    // * @return \Illuminate\Http\Response
-    // */
-    // public function destroy(Request $request)
-    // {
-    // User::find($request->user_id)->delete();
-    // return redirect()->route('users.index')->with('success','تم حذف المستخدم بنجاح');
+
  public function applyment(Announcement $announcement, $id) {
     // Récupérer l'ID de l'utilisateur authentifié
     $userId = auth()->id();
@@ -155,7 +148,7 @@ public function update(Request $request, $id)
     $announcement->users()->attach($userId, ['announcement_id' => $id]);
     
     // Redirection avec un message de succès
-    return redirect(route('Compagnies.home'))->with('success', 'Vous avez postulé avec succès à cette annonce.');
+    return redirect(route('Compagnies.index'))->with('success', 'Vous avez postulé avec succès à cette annonce.');
 }
 
     

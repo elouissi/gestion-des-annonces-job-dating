@@ -224,6 +224,95 @@
             </div>
             @endcan
 
+            @can('show_annoncement')
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">my applyments</h6>
+                     </div>
+             
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Content</th>
+                                    <th scope="col">Company Name</th>
+                                 </tr>
+                            </thead>
+                                 <tbody>
+                                    @foreach ($userApplyments as $applyment)
+                                        <tr>
+                                            <td>{{ $applyment->title }}</td>
+                                            <td>{{ $applyment->content }}</td>
+                                            <td>{{ $applyment->compagnie->name }}</td>
+                                    
+                                        </tr>
+                                    @endforeach
+                                    
+
+                                </tbody>
+                                
+                             
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @endcan
+            @can('show_users')
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">applyment</h6>
+                        <a class="btn btn-sm btn-primary" href="{{ route('Announcement.formAnnouncement') }}">Add Announcement</a>
+                    </div>
+             
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Content</th>
+                                    <th scope="col">Company Name</th>
+                                    <th scope="col">Utilisateurs appliqués:</th>
+                                     <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                                 <tbody>
+                                    @foreach ($applyments as $applyment)
+                                        <tr>
+                                            <td>{{ $applyment->title }}</td>
+                                            <td>{{ $applyment->content }}</td>
+                                            <td>{{ $applyment->compagnie->name }}</td>
+                                             <td>
+                                                @foreach($applyment->users as $user)
+                                                    <span style="color: aliceblue" class="skill-background-{{ $loop->index }}">{{ $user->name }}  </span>
+                                                    @unless($loop->last)
+                                                        <br> <!-- Ajoutez une ligne vide sauf pour la dernière compétence -->
+                                                    @endunless
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                {{-- <form action="{{ route('Announcement.destroy', $announcement->id) }}" method="POST">
+                                                    <a class="btn btn-success" href="{{ route('Announcement.edit', $announcement->id) }}">Update</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </form> --}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    
+
+                                </tbody>
+                                
+                             
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @endcan
+
             @can('show_users')
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
